@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>FA_FRU</RootNamespace>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="AEAssist">
+        <HintPath>..\..\..\..\FF14act\AEAssist 国服 1024\AEAssistCNVersion\AEAssist\AEAssist.dll</HintPath>
+      </Reference>
+      <Reference Include="Amatsukaze">
+        <HintPath>..\..\..\..\FF14act\AEAssist 国服 1024\ACR\Amatsukaze\Amatsukaze.dll</HintPath>
+      </Reference>
+      <Reference Include="Dalamud">
+        <HintPath>C:\Users\denglang\AppData\Roaming\XIVLauncherCN\addon\Hooks\dev\Dalamud.dll</HintPath>
+      </Reference>
+      <Reference Include="DDDacr">
+        <HintPath>..\..\..\..\FF14act\AEAssist 国服 1024\ACR\DDDacr\DDDacr.dll</HintPath>
+      </Reference>
+      <Reference Include="ECommons">
+        <HintPath>..\..\..\..\FF14act\AEAssist 国服 1024\AEAssistCNVersion\AEAssist\ECommons.dll</HintPath>
+      </Reference>
+      <Reference Include="ImGui.NET">
+        <HintPath>C:\Users\denglang\AppData\Roaming\XIVLauncherCN\addon\Hooks\dev\ImGui.NET.dll</HintPath>
+      </Reference>
+      <Reference Include="Newtonsoft.Json">
+        <HintPath>C:\Users\denglang\AppData\Roaming\XIVLauncherCN\addon\Hooks\dev\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+      <Reference Include="ShiyuviBlack">
+        <HintPath>..\..\..\..\FF14act\AEAssist 国服 1024\ACR\ShiyuviBlack\ShiyuviBlack.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
