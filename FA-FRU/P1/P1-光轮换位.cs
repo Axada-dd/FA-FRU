@@ -9,8 +9,8 @@ public class P1_光轮换位 : ITriggerScript
 {
     public bool Check(ScriptEnv scriptEnv, ITriggerCondParams condParams)
     {
-        if(condParams is not AddStatusCondParams statusCondParams) return false;
-        if (statusCondParams.StatusId != 1051) return false;
+        // if(condParams is not AddStatusCondParams statusCondParams) return false;
+        // if (statusCondParams.StatusId != 1051) return false;
         var 点名目标 = TargetMgr.Instance.Units.Values
             .Where(e =>
             {
@@ -22,9 +22,9 @@ public class P1_光轮换位 : ITriggerScript
                 return false;
             })
             .Select(e => e.Name.ToString()).ToList();
-        LogHelper.Print("点名目标: " + string.Join(",", 点名目标));
         if(点名目标.Count != 2) return false;
         if (!scriptEnv.KV.ContainsKey("P1光轮左安全")) return false;
+        LogHelper.Print("点名目标: " + string.Join(",", 点名目标));
         return true;
     }
 }
