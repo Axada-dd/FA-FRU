@@ -17,7 +17,8 @@ public class P1_Open_Remote : ITriggerScript
 
         foreach (var player in PartyHelper.Party)
         {
-            int myindex = player.GetRoleByPlayerObjct() switch
+            var playerRole = player.GetRoleByPlayerObjct();
+            int myindex = playerRole switch
             {
                 "MT" => 0,
                 "ST" => 1,
@@ -47,16 +48,16 @@ public class P1_Open_Remote : ITriggerScript
             var isTank = spread && (myindex == 0 || myindex == 1);
             var mPosEnd = 坐标计算.RotatePoint(outPoint ? new(100, 0, 85) : new(100, 0, 95), new(100, 0, 100), float.Pi / 4 * rot8);
             var nextPos=坐标计算.RotatePoint(mPosEnd, new(100, 0, 100), (inPoint || isTank) ? -float.Pi / 8 : float.Pi/8);
-            if (!scriptEnv.KV.ContainsKey($"{player.GetRoleByPlayerObjct()}P1开场八方pos"))
+            if (!scriptEnv.KV.ContainsKey($"{playerRole}P1开场八方pos"))
             {
-                scriptEnv.KV.Add($"{player.GetRoleByPlayerObjct()}P1开场八方pos", mPosEnd);
+                scriptEnv.KV.Add($"{playerRole}P1开场八方pos", mPosEnd);
             }
 
-            if (!scriptEnv.KV.ContainsKey($"{player.GetRoleByPlayerObjct()}P1开场八方nextpos"))
+            if (!scriptEnv.KV.ContainsKey($"{playerRole}P1开场八方nextpos"))
             {
-                scriptEnv.KV.Add($"{player.GetRoleByPlayerObjct()}P1开场八方nextpos", nextPos);    
+                scriptEnv.KV.Add($"{playerRole}P1开场八方nextpos", nextPos);    
             }
-            位移.Tp(mPosEnd);
+            RemoteControlHelper.SetPos(playerRole,mPosEnd);
             
         }
         return true;
