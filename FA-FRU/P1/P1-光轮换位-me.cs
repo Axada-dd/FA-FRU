@@ -1,3 +1,4 @@
+using System.Numerics;
 using AEAssist;
 using AEAssist.CombatRoutine.Module;
 using AEAssist.CombatRoutine.Module.Target;
@@ -25,7 +26,8 @@ public class P1_光轮换位_me : ITriggerScript
             }).ToList();
         var 点名目标Name = 点名目标.Select(e=> e.Name.TextValue).ToList();
         if(点名目标.Count != 2) return false;
-        if (!scriptEnv.KV.ContainsKey("P1光轮左安全")) return false;
+        if (!scriptEnv.KV.ContainsKey("P1光轮右安全")) return false;
+        var P1光轮右安全 = (bool)scriptEnv.KV["P1光轮右安全"];
         LogHelper.Print("点名目标: " + string.Join(",", 点名目标Name));
         if (点名目标.Select(e => e.IsMe()).Contains(true))//我是点名目标
         {
@@ -34,14 +36,17 @@ public class P1_光轮换位_me : ITriggerScript
                 if (AI.Instance.PartyRole == "D1")//我是D1
                 {
                     LogHelper.Print("换到上面");
-                }
+                    new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 93).SharePoint();
+                }new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 107).SharePoint();
+                
             }
             else if (点名目标.All(e => e.IsTankOrHealer()))
             {
                 if (AI.Instance.PartyRole == "MT") //我是MT
                 {
-                   LogHelper.Print("换到下面"); 
-                }
+                   LogHelper.Print("换到下面");
+                   new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 107).SharePoint();
+                }new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 93).SharePoint();
             }
         }
         else
@@ -51,14 +56,16 @@ public class P1_光轮换位_me : ITriggerScript
                 if (AI.Instance.PartyRole == "MT")
                 {
                     LogHelper.Print("换到下面");
-                }
+                    new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 107).SharePoint();
+                }new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 93).SharePoint();
             }
             else if (点名目标.All(e => e.IsTankOrHealer()))//点名T奶
             {
                 if (AI.Instance.PartyRole == "D1")
                 {
                     LogHelper.Print("换到上面");
-                } 
+                    new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 93).SharePoint();
+                } new Vector3(P1光轮右安全 ? 105.5f : 94.5f, 0, 107).SharePoint();
             }
         }
         return true;

@@ -24,7 +24,6 @@ public class 教程 : ITriggerScript
                 位移.Tp(tp坐标);
             }
 
-
             return true;
         }
         return false;
