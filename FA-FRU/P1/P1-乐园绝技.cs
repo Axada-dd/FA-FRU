@@ -14,10 +14,6 @@ namespace FA_FRU.P1;
 
 public class P1_乐园绝技 : ITriggerScript
 {
-    private readonly List<Vector3> 八方点 = [
-        new (100f,0,95f),new (103.53f,0,96.46f),new (105f,0,100f),new (103.53f,0,103.53f),new (100f,0,105f),
-        new (96.46f,0,103.53f),new (95f,0,100f),new (96.46f,0,96.46f)
-    ];
     int myindex = AI.Instance.PartyRole switch
     {
         "MT" => 0,
