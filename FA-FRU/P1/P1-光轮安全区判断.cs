@@ -15,9 +15,10 @@ public class P1_光轮安全区判断 : ITriggerScript
         var atEast = TargetMgr.Instance.Units.Values
             .Where(u => u.IsCasting && u.CastActionId == 40152 && (MathF.Abs(u.Position.Z - 100) < 1)).ToList()[0]
             .Position.X-100>1;
-        if (!scriptEnv.KV.ContainsKey("P1光轮左安全"))
+        if (!scriptEnv.KV.ContainsKey("P1光轮右安全"))
         {
-            scriptEnv.KV.Add("P1光轮左安全", atEast);
+            scriptEnv.KV.Add("P1光轮右安全", atEast);
+            LogHelper.Print($"P1光轮右安全区判断: {atEast}");
         }
         return true;
     }
