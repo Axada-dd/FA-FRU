@@ -6,6 +6,7 @@ using AEAssist.Extension;
 using AEAssist.Helper;
 using Dalamud.Game.ClientState.Objects.Types;
 using DDDacr.工具;
+using ECommons;
 
 namespace FA_FRU.P1;
 
@@ -75,8 +76,8 @@ public class P1_四连抓人记录 : ITriggerScript
         {
            scriptEnv.KV.Add("P1四连抓人",队伍tp位置); 
         }
-        LogHelper.Print($"点名玩家：{string.Join(",",点名目标.Select(e=>e.GetRoleByPlayerObjct()).ToList())}");
-        LogHelper.Print("剩余玩家: " + string.Join(",", GroupOrder));
+        LogHelper.Print($"点名玩家：{点名目标.Select(e=>e.GetRoleByPlayerObjct()).Print()}");
+        LogHelper.Print("剩余玩家: " + GroupOrder.Print());
         return true;
     }
     
