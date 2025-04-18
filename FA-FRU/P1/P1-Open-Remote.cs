@@ -1,3 +1,4 @@
+using System.Numerics;
 using AEAssist.CombatRoutine.Module;
 using AEAssist.CombatRoutine.Trigger;
 using AEAssist.CombatRoutine.Trigger.Node;
@@ -8,13 +9,14 @@ namespace FA_FRU.P1;
 
 public class P1_Open_Remote : ITriggerScript
 {
-    
+    private Dictionary<string,Vector3> P1开场八方pos = new();
+    private Dictionary<string,Vector3> P1开场八方nextpos = new();
     public bool Check(ScriptEnv scriptEnv, ITriggerCondParams condParams)
     {
         if (condParams is not EnemyCastSpellCondParams spellCondParams) return false;
         if (spellCondParams.SpellId != 40144 && spellCondParams.SpellId != 40148) return false;
         var spread = spellCondParams.SpellId == 40148;
-
+        
         foreach (var player in PartyHelper.Party)
         {
             var playerRole = player.GetRoleByPlayerObjct();
@@ -48,18 +50,13 @@ public class P1_Open_Remote : ITriggerScript
             var isTank = spread && (myindex == 0 || myindex == 1);
             var mPosEnd = 坐标计算.RotatePoint(outPoint ? new(100, 0, 85) : new(100, 0, 95), new(100, 0, 100), float.Pi / 4 * rot8);
             var nextPos=坐标计算.RotatePoint(mPosEnd, new(100, 0, 100), (inPoint || isTank) ? -float.Pi / 8 : float.Pi/8);
-            if (!scriptEnv.KV.ContainsKey($"{playerRole}P1开场八方pos"))
-            {
-                scriptEnv.KV.Add($"{playerRole}P1开场八方pos", mPosEnd);
-            }
-
-            if (!scriptEnv.KV.ContainsKey($"{playerRole}P1开场八方nextpos"))
-            {
-                scriptEnv.KV.Add($"{playerRole}P1开场八方nextpos", nextPos);    
-            }
+            P1开场八方pos.Add(playerRole,mPosEnd);
+            P1开场八方nextpos.Add(playerRole,nextPos);
             RemoteControlHelper.SetPos(playerRole,mPosEnd);
             
         }
+        if(!scriptEnv.KV.ContainsKey("P1开场八方pos")) scriptEnv.KV.Add("P1开场八方pos",P1开场八方pos);
+        if(!scriptEnv.KV.ContainsKey("P1开场八方nextpos")) scriptEnv.KV.Add("P1开场八方nextpos",P1开场八方nextpos);
         return true;
     }
 }
