@@ -55,6 +55,8 @@ public class P1_Open : ITriggerScript
             scriptEnv.KV.Add("P1开场八方nextpos", nextPos);    
         }
         位移.Tp(mPosEnd);
+
+        
         return true;
     }
 }
