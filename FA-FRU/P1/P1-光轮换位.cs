@@ -6,6 +6,7 @@ using AEAssist.CombatRoutine.Trigger.Node;
 using AEAssist.Helper;
 using Dalamud.Game.ClientState.Objects.Types;
 using DDDacr.工具;
+using ECommons;
 
 namespace FA_FRU.P1;
 
@@ -14,6 +15,8 @@ public class P1_光轮换位 : ITriggerScript
     private List<IGameObject> 点名目标 = new();
     List<int> P1转轮召抓人 = [0, 0, 0, 0, 0, 0, 0, 0];
     List<int> upGroup = [];
+    private Dictionary<string, Vector3> P1光轮坐标1 = new Dictionary<string, Vector3>();
+    private Dictionary<string, Vector3> P1光轮坐标2 = new Dictionary<string, Vector3>();
     public bool Check(ScriptEnv scriptEnv, ITriggerCondParams condParams)
     {
         if (condParams is not TetherCondParams tetherCondParams) return false;
@@ -32,13 +35,16 @@ public class P1_光轮换位 : ITriggerScript
         if (o1 != 3 && o2 != 3) upGroup.Add(3);
         if (upGroup.Count < 4 && o1 != 0 && o2 != 0) upGroup.Add(0);
         if (upGroup.Count < 4 && o1 != 4 && o2 != 4) upGroup.Add(4);
-        foreach (var plager in PartyHelper.Party)
+        foreach (var player in PartyHelper.Party)
         {
-            var playerIndex = plager.GetRoleByPlayerObjctIndex();
+            var playerIndex = player.GetRoleByPlayerObjctIndex();
             var dealpos1 = new Vector3(atEast ? 105.5f : 94.5f, 0, upGroup.Contains(playerIndex) ? 93 : 107);
             var dealpos2 = new Vector3(atEast ? 102 : 98, 0, upGroup.Contains(playerIndex) ? 93 : 107);
-
+            P1光轮坐标1.Add(player.GetRoleByPlayerObjct(), dealpos1);
+            P1光轮坐标2.Add(player.GetRoleByPlayerObjct(), dealpos2);
         }
+        if(!scriptEnv.KV.ContainsKey("P1光轮坐标1"))scriptEnv.KV.Add("P1光轮坐标1", P1光轮坐标1);
+        if(!scriptEnv.KV.ContainsKey("P1光轮坐标2"))scriptEnv.KV.Add("P1光轮坐标2", P1光轮坐标2);
         return true;
     }
 }
