@@ -145,7 +145,5 @@ public class P1_塔记录 : ITriggerScript
         }
         if(!scriptEnv.KV.ContainsKey("P1踩塔")) scriptEnv.KV.Add("P1踩塔", 踩塔);
         return true;
-        if(!scriptEnv.KV.ContainsKey("P1塔")) scriptEnv.KV.Add("P1塔", P1塔);
-        return true;
     }
 }
