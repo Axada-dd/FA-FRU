@@ -20,7 +20,9 @@ public class 队伍职能获取 : ITriggerScript
                 0 => "MT",1=>"D4",2=>"ST",3=>"D2",4=>"H2",5=>"D1",6=>"H1",7=>"D3",
             });
         }
-        LogHelper.Print($"{partyRole.Print()}");
+        LogHelper.Print($"{PartyHelper.Party.ToList().Select(e=>e.GetObjcetJobName()).Print()}");
+        LogHelper.Print($"{partyRole.Values.Print()}");
+        if(!scriptEnv.KV.ContainsKey("PartyRole"))scriptEnv.KV.Add("PartyRole", partyRole);
         return true;
     }
 }
