@@ -26,6 +26,7 @@ public class P1_光轮 : ITriggerScript
                 return true;
             }
         }*/
+        Share.TrustDebugPoint.Clear();
         RemoteControlHelper.SetPos("H1|H2|MT|ST", new Vector3(100, 0, 116));
         RemoteControlHelper.SetPos("D1|D2|D3|D4", new Vector3(100, 0, 84));
         return true;

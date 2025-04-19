@@ -1,4 +1,5 @@
 using System.Numerics;
+using AEAssist;
 using AEAssist.CombatRoutine.Module.Target;
 using AEAssist.CombatRoutine.Trigger;
 using AEAssist.CombatRoutine.Trigger.Node;
@@ -39,12 +40,13 @@ public class P1_四连抓人记录 : ITriggerScript
         if (condParams is not TetherCondParams tetherCondParams) return false;
         if (tetherCondParams.Args0 is not (249 or 287)) return false;
         var 点名 = tetherCondParams.Right;
+        LogHelper.Print($"{点名目标.Count}号点名目标：{点名目标.Last().Name}，职能：{点名目标.Last().GetRoleByPlayerObjct()}，{(tetherCondParams.Args0==249?"火":"雷")}");
         点名目标.Add(点名);
         GroupOrder.Remove(点名.GetRoleByPlayerObjct());
-        LogHelper.Print($"{点名目标.Count}号点名目标：{点名目标.Last().Name}，职能：{点名目标.Last().GetRoleByPlayerObjct()}，{(tetherCondParams.Args0==249?"火":"雷")}");
         连线雷火顺序.Add(tetherCondParams.Args0==249);
         
         if(点名目标.Count !=4) return false;
+        Share.TrustDebugPoint.Clear();
         i1p1 = 连线雷火顺序[0] ? new(100, 0, 100 - far - dis) : new(100 + dis, 0, 100 - far);
         i1p2 = 连线雷火顺序[2] ? new(100, 0, 100 - far - dis) : new(100 + dis, 0, 100 - far);
         i2p1 = 连线雷火顺序[0] ? new(100, 0, 100 - far - dis) : new(100 - dis, 0, 100 - far);

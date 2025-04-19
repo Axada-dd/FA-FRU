@@ -34,20 +34,27 @@ public class P1_乐园绝技_Remote : ITriggerScript
         var 隐身分身 = TargetMgr.Instance.Units.Values.Where(u => u.DataId == 17820 && 举手分身.Contains(u.EntityId)).ToList();
         if (隐身分身.Count is not 3) return false;
         Share.TrustDebugPoint.Clear();
-        foreach (var VAR in 隐身分身)
-        {
-            Share.TrustDebugPoint.Add(VAR.Position);
-            LogHelper.Print($"{VAR.Position}");
-        }
         foreach (var obj in 隐身分身)
         {
             var dir8= 坐标计算.PositionTo8Dir(obj.Position, new(100, 0, 100));
             P1雾龙记录[dir8 % 4] = 1;
         }
 
-        foreach (var player in PartyHelper.Party)
+        for (int index = 0; index < 8; index++)
         {
-            var myindex = player.GetRoleByPlayerObjctIndex();
+            var myindex = index;
+            var playerRole = index switch
+            {
+                0 => "MT",
+                1 => "ST",
+                2 => "H1",
+                3 => "H2",
+                4 => "D1",
+                5 => "D2",
+                6 => "D3",
+                7 => "D4",
+                _ => "H1"
+            };
             bool isH1group = myindex is 0 or 2 or 4 or 6;
             if(!P1雾龙雷)
             {
@@ -62,7 +69,7 @@ public class P1_乐园绝技_Remote : ITriggerScript
                     _ => 0
                 };
                 var mPosEnd = 坐标计算.RotatePoint(new(100, 0, 84), new(100, 0, 100), float.Pi / 4 * rot8);
-                RemoteControlHelper.SetPos(player.GetRoleByPlayerObjct(),mPosEnd);
+                RemoteControlHelper.SetPos(playerRole,mPosEnd);
             }
             else
             {
@@ -92,7 +99,7 @@ public class P1_乐园绝技_Remote : ITriggerScript
                     _ => p1,
                 };
                 var mPosEnd = 坐标计算.RotatePoint(myPosA, new(100, 0, 100), float.Pi / 4 * rot8);
-                RemoteControlHelper.SetPos(player.GetRoleByPlayerObjct(),mPosEnd);
+                RemoteControlHelper.SetPos(playerRole,mPosEnd);
             }
         }
         return true;

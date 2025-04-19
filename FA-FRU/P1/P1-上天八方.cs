@@ -1,4 +1,5 @@
 using System.Numerics;
+using AEAssist;
 using AEAssist.CombatRoutine.Module;
 using AEAssist.CombatRoutine.Trigger;
 using AEAssist.CombatRoutine.Trigger.Node;
@@ -16,6 +17,7 @@ public class P1_上天八方 : ITriggerScript
         if (condParams is not EnemyCastSpellCondParams spellCondParams) return false;
         if (spellCondParams.SpellId != 40329 && spellCondParams.SpellId != 40330) return false;
         var spread = spellCondParams.SpellId == 40330;
+        Share.TrustDebugPoint.Clear();
         for (int index = 0; index < 8; index++)
         {
             var rot8 = index switch

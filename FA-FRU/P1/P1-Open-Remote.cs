@@ -1,4 +1,5 @@
 using System.Numerics;
+using AEAssist;
 using AEAssist.CombatRoutine.Module;
 using AEAssist.CombatRoutine.Trigger;
 using AEAssist.CombatRoutine.Trigger.Node;
@@ -15,6 +16,7 @@ public class P1_Open_Remote : ITriggerScript
     {
         if (condParams is not EnemyCastSpellCondParams spellCondParams) return false;
         if (spellCondParams.SpellId != 40144 && spellCondParams.SpellId != 40148) return false;
+        Share.TrustDebugPoint.Clear();
         var spread = spellCondParams.SpellId == 40148;
         for (int index = 0; index < 8; index++)
         {

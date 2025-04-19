@@ -1,4 +1,5 @@
 using System.Numerics;
+using AEAssist;
 using AEAssist.CombatRoutine.Trigger;
 using AEAssist.CombatRoutine.Trigger.Node;
 using AEAssist.Helper;
@@ -13,6 +14,7 @@ public class P1_四连抓人_1 : ITriggerScript
         if (condParams is not ReceviceAbilityEffectCondParams abilityEffectCondParams) return false;
         if (abilityEffectCondParams.ActionId != 40143) return false;
         if (!scriptEnv.KV.ContainsKey("P1四连抓人")) return false;
+        Share.TrustDebugPoint.Clear();
         count++;
         var nextpos = (List<KeyValuePair<string,Vector3>>)scriptEnv.KV["P1四连抓人"];
         if (count == 1)

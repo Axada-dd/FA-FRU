@@ -21,6 +21,7 @@ public class P1_光轮换位 : ITriggerScript
     {
         if (condParams is not TetherCondParams tetherCondParams) return false;
         if (tetherCondParams.Args0 is not (249 or 287)) return false;
+        Share.TrustDebugPoint.Clear();
         点名目标.Add(tetherCondParams.Right);
 
         P1转轮召抓人[tetherCondParams.Right.GetRoleByPlayerObjctIndex()] = 1;
