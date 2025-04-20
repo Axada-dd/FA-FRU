@@ -23,7 +23,7 @@ public class P1_塔_2 : ITriggerScript
         await Task.Delay(400);
         foreach (var pos in partyPos)
         {
-            RemoteControlHelper.LockPos(pos.Key, pos.Value, 1000);
+            RemoteControlHelper.SetPos(pos.Key, pos.Value);
         }
     }
 }

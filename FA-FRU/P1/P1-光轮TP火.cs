@@ -23,7 +23,7 @@ public class P1_光轮TP火 : ITriggerScript
         await Task.Delay(1000);
         foreach (var pos in partyPos)
         {
-            RemoteControlHelper.LockPos(pos.Key, pos.Value, 1000);
+            RemoteControlHelper.SetPos(pos.Key, pos.Value);
         }
     }
 }
