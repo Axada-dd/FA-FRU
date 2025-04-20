@@ -28,6 +28,8 @@ public class P1_乐园绝技_Remote : ITriggerScript
                 P1雾龙雷 = false;
             }
         }
+
+        if (TargetMgr.Instance.Units is null) return false;
         var 举手分身 = TargetMgr.Instance.Units.Values
             .Where(u => u.IsCasting&&u.DataId==17840).Select(u => u.EntityId+1).ToList();
         if (举手分身.Count is not 3) return false;

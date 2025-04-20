@@ -12,6 +12,7 @@ public class P1_光轮安全区判断 : ITriggerScript
     {
         if (condParams is not EnemyCastSpellCondParams spellCondParams) return false;
         if (spellCondParams.SpellId != 40152) return false;
+        if (TargetMgr.Instance.Units == null) return false;
         var atEast = TargetMgr.Instance.Units.Values
             .Where(u => u.IsCasting && u.CastActionId == 40152 && (MathF.Abs(u.Position.Z - 100) < 1)).ToList()[0]
             .Position.X-100>1;

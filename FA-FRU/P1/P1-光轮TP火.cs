@@ -15,11 +15,15 @@ public class P1_光轮TP火 : ITriggerScript
         if (!scriptEnv.KV.ContainsKey("P1光轮坐标2")) return false;
         Share.TrustDebugPoint.Clear();
         var P1光轮坐标2 = (Dictionary<string, Vector3>)scriptEnv.KV["P1光轮坐标2"];
-        foreach (var 坐标 in P1光轮坐标2)
-        {
-            RemoteControlHelper.SetPos(坐标.Key, 坐标.Value);
-            RemoteControlHelper.LockPos(坐标.Key,坐标.Value,4000);
-        }
+        Acton(P1光轮坐标2);
         return true;
+    }
+    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    {
+        await Task.Delay(1000);
+        foreach (var pos in partyPos)
+        {
+            RemoteControlHelper.LockPos(pos.Key, pos.Value, 1000);
+        }
     }
 }

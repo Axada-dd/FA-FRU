@@ -51,13 +51,21 @@ public class P1_上天八方 : ITriggerScript
             var nextPos=坐标计算.RotatePoint(mPosEnd, new(100, 0, 100), (inPoint || isTank) ? -float.Pi / 8 : float.Pi/8);
             P1上天八方pos.Add(playerRole,mPosEnd);
             P1上天八方nextpos.Add(playerRole,nextPos);
-            RemoteControlHelper.LockPos(playerRole,mPosEnd,4000);
+            //RemoteControlHelper.LockPos(playerRole,mPosEnd,4000);
             
         }
+        Acton(P1上天八方pos);
         if(!scriptEnv.KV.ContainsKey("P1上天八方pos")) scriptEnv.KV.Add("P1上天八方pos",P1上天八方pos);
         if(!scriptEnv.KV.ContainsKey("P1上天八方nextpos")) scriptEnv.KV.Add("P1上天八方nextpos",P1上天八方nextpos);
         return true;
     }
-    
+    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    {
+        await Task.Delay(4000);
+        foreach (var pos in partyPos)
+        {
+            RemoteControlHelper.LockPos(pos.Key, pos.Value, 1000);
+        }
+    }
     
 }

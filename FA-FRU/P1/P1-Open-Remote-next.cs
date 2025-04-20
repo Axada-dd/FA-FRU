@@ -15,10 +15,16 @@ public class P1_Open_Remote_next : ITriggerScript
         if(!scriptEnv.KV.ContainsKey("P1开场八方nextpos")) return false;
         Share.TrustDebugPoint.Clear();
         var P1开场八方nextpos = (Dictionary<string, Vector3>)scriptEnv.KV["P1开场八方nextpos"];
-        foreach (var nextpos in P1开场八方nextpos)
-        {
-            RemoteControlHelper.SetPos(nextpos.Key, nextpos.Value);
-        }
+        Acton(P1开场八方nextpos);
         return true;
+    }
+
+    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    {
+        await Task.Delay(1000);
+        foreach (var pos in partyPos)
+        {
+            RemoteControlHelper.LockPos(pos.Key, pos.Value, 1000);
+        }
     }
 }
