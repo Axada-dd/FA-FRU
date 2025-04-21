@@ -12,12 +12,12 @@ public class P2_罪神圣_起跑 : ITriggerScript
     {
         if(condParams is not ReceviceAbilityEffectCondParams abilityEffectCondParams) return false;
         if (abilityEffectCondParams.ActionId != 40200) return false;
-        if(!scriptEnv.KV.ContainsKey("起跑点1")) return false;
-        if(!scriptEnv.KV.ContainsKey("起跑点2")) return false;
+        if(!scriptEnv.KV.ContainsKey("起跑点MT组")) return false;
+        if(!scriptEnv.KV.ContainsKey("起跑点ST组")) return false;
         
         Share.TrustDebugPoint.Clear();
-        var 起跑点1 = (Vector3)scriptEnv.KV["起跑点1"];
-        var 起跑点2 = (Vector3)scriptEnv.KV["起跑点2"];
+        var 起跑点1 = (Vector3)scriptEnv.KV["起跑点MT组"];
+        var 起跑点2 = (Vector3)scriptEnv.KV["起跑点ST组"];
         MTActon(起跑点1);
         STActon(起跑点2);
         return true;

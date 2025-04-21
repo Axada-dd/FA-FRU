@@ -21,8 +21,8 @@ public class P2_光之巫女_位置记录 : ITriggerScript
         var 起跑点2 = 坐标计算.RotatePoint(坐标计算.坐标远离中心(spellCondParams.CastPos, new Vector3(100,0,100),1), new Vector3(100, 0, 100), -float.Pi / 8 );
         Share.TrustDebugPoint.Add(起跑点1);
         Share.TrustDebugPoint.Add(起跑点2);
-        if(!scriptEnv.KV.ContainsKey("起跑点1"))scriptEnv.KV.Add("起跑点1", 起跑点1);
-        if(!scriptEnv.KV.ContainsKey("起跑点2"))scriptEnv.KV.Add("起跑点2", 起跑点2);
+        scriptEnv.KV.Add("起跑点MT组", 起跑点1);
+        scriptEnv.KV.Add("起跑点ST组", 起跑点2);
         return true;
     }
 }

@@ -68,8 +68,8 @@ public class P2_钻石星辰_引导扇形 : ITriggerScript
             
                 
         }
-        TPaction(partyPos_c, 钢铁 ? 100:2000);
-        TPaction(partyPos, 5500);
+        TPaction(partyPos_c, 100);
+        TPaction(partyPos, 4000);
     }
 
     private void 扇形引导(List<int> group, bool 钢铁, bool 冰圈斜点)

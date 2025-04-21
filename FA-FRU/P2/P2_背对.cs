@@ -17,7 +17,7 @@ public class P2_背对 : ITriggerScript
 
     private async void Action(float rotation)
     {
-       await Task.Delay(4500);
-       RemoteControlHelper.SetRot("",rotation);
+       await Task.Delay(2000);
+       RemoteControlHelper.SetRot("MT|ST|H1|H2|D1|D2|D3|D4",rotation);
     }
 }
