@@ -44,12 +44,12 @@ public class P2_钻石星辰_击退 : ITriggerScript
             var 击退位置 = 坐标计算.RotatePoint(new Vector3(95, 0, 100), new(100, 0, 100), float.Pi / 4 * rotation);
             partyPos.Add(playerRole, 击退位置);
         }
-        Acton(partyPos);
+        TpAction(partyPos);
         return true;
     }
-    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    private static async void TpAction(Dictionary<string, Vector3> partyPos)
     {
-        await Task.Delay(300);
+        await Task.Delay(1000);
         foreach (var pos in partyPos)
         {
             RemoteControlHelper.SetPos(pos.Key, pos.Value);

@@ -68,8 +68,8 @@ public class P2_钻石星辰_引导扇形 : ITriggerScript
             
                 
         }
-        TPaction(partyPos_c, 100);
-        TPaction(partyPos, 4000);
+        TpAction(partyPos_c, 100);
+        TpAction(partyPos, 6000);
     }
 
     private void 扇形引导(List<int> group, bool 钢铁, bool 冰圈斜点)
@@ -107,10 +107,10 @@ public class P2_钻石星辰_引导扇形 : ITriggerScript
             partyPos.Add(playerRole,new Vector3(100,0,100));
                 
         }
-        if(钢铁)TPaction(partyPos,3500);
+        if(钢铁)TpAction(partyPos,6000);
     }
 
-    private async void TPaction(Dictionary<string, Vector3> partyPos, int delay)
+    private async void TpAction(Dictionary<string, Vector3> partyPos, int delay)
     {
         await Task.Delay(delay);
         foreach (var pos in partyPos)

@@ -54,14 +54,14 @@ public class P1_上天八方 : ITriggerScript
             //RemoteControlHelper.LockPos(playerRole,mPosEnd,4000);
             
         }
-        Acton(P1上天八方pos);
+        TpAction(P1上天八方pos);
         if(!scriptEnv.KV.ContainsKey("P1上天八方pos")) scriptEnv.KV.Add("P1上天八方pos",P1上天八方pos);
         if(!scriptEnv.KV.ContainsKey("P1上天八方nextpos")) scriptEnv.KV.Add("P1上天八方nextpos",P1上天八方nextpos);
         return true;
     }
-    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    private static async void TpAction(Dictionary<string, Vector3> partyPos)
     {
-        await Task.Delay(4000);
+        await Task.Delay(2000);
         foreach (var pos in partyPos)
         {
             RemoteControlHelper.SetPos(pos.Key, pos.Value);

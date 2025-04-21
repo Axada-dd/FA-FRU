@@ -16,10 +16,10 @@ public class P1_上天八方_2 : ITriggerScript
         if(!scriptEnv.KV.ContainsKey("P1上天八方pos")) return false;
         Share.TrustDebugPoint.Clear();
         var pos = (Dictionary<string, Vector3>)scriptEnv.KV["P1上天八方pos"];
-        Acton(pos);
+        TpAction(pos);
         return true;
     }
-    private static async void Acton(Dictionary<string, Vector3> partyPos)
+    private static async void TpAction(Dictionary<string, Vector3> partyPos)
     {
         await Task.Delay(300);
         foreach (var pos in partyPos)

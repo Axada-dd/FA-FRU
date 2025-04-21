@@ -55,22 +55,22 @@ public class P1_四连抓人记录 : ITriggerScript
         i3p2 = 连线雷火顺序[3] ? new(100, 0, 100 + far + dis) : new(100 - dis, 0, 100 + far);
         i4p1 = 连线雷火顺序[1] ? new(100, 0, 100 + far + dis) : new(100 + dis, 0, 100 + far);
         i4p2 = 连线雷火顺序[3] ? new(100, 0, 100 + far + dis) : new(100 + dis, 0, 100 + far);
-        /*RemoteControlHelper.SetPos(点名目标[0].GetRoleByPlayerObjct(),t1p1);
+        RemoteControlHelper.SetPos(点名目标[0].GetRoleByPlayerObjct(),t1p1);
         RemoteControlHelper.SetPos(点名目标[1].GetRoleByPlayerObjct(),t2p1);
         RemoteControlHelper.SetPos(点名目标[2].GetRoleByPlayerObjct(),t3p1);
         RemoteControlHelper.SetPos(点名目标[3].GetRoleByPlayerObjct(),t4p1);
         RemoteControlHelper.SetPos(GroupOrder[0],i1p1);
         RemoteControlHelper.SetPos(GroupOrder[1],i2p1);
         RemoteControlHelper.SetPos(GroupOrder[2],i3p1);
-        RemoteControlHelper.SetPos(GroupOrder[3],i4p1);*/
-        RemoteControlHelper.LockPos(点名目标[0].GetRoleByPlayerObjct(), t1p1, 7500);
+        RemoteControlHelper.SetPos(GroupOrder[3],i4p1);
+        /*RemoteControlHelper.LockPos(点名目标[0].GetRoleByPlayerObjct(), t1p1, 7500);
         RemoteControlHelper.LockPos(点名目标[1].GetRoleByPlayerObjct(), t2p1, 11000);
         RemoteControlHelper.LockPos(点名目标[2].GetRoleByPlayerObjct(), t3p1, 7500);
         RemoteControlHelper.LockPos(点名目标[3].GetRoleByPlayerObjct(), t4p1, 11000);
         RemoteControlHelper.LockPos(GroupOrder[0], i1p1, 7500);
         RemoteControlHelper.LockPos(GroupOrder[1], i2p1, 7500);
         RemoteControlHelper.LockPos(GroupOrder[2], i3p1, 11000);
-        RemoteControlHelper.LockPos(GroupOrder[3], i4p1, 11000);
+        RemoteControlHelper.LockPos(GroupOrder[3], i4p1, 11000);*/
         //上组4人
         队伍tp位置.Add(new (点名目标[0].GetRoleByPlayerObjct(), t1p1));
         队伍tp位置.Add(new (点名目标[2].GetRoleByPlayerObjct(), t3p2));

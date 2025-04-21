@@ -108,7 +108,17 @@ public class P1_踩塔 : ITriggerScript
             }
             
         }
-        if(!scriptEnv.KV.ContainsKey("P1踩塔")) scriptEnv.KV.Add("P1踩塔", 踩塔);
+        TpAction(踩塔, lei ? 6000:7000);
+        //if(!scriptEnv.KV.ContainsKey("P1踩塔")) scriptEnv.KV.Add("P1踩塔", 踩塔);
         return true;
+    }
+    private async void TpAction(List<KeyValuePair<string, Vector3>> partyPos, int delay)
+    {
+        await Task.Delay(delay);
+        foreach (var pos in partyPos)
+        {
+            RemoteControlHelper.SetPos(pos.Key,pos.Value);
+        }
+        
     }
 }

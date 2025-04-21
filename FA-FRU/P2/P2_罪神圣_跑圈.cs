@@ -18,14 +18,14 @@ public class P2_罪神圣_跑圈 : ITriggerScript
         if (abilityEffectCondParams.ActionId != 40209) return false;
         if(abilityEffectCondParams.Target == null) return false;
         if (abilityEffectCondParams.Target.DataId != PartyHelper.Party.ToList().First().DataId) return false;
-        if(!scriptEnv.KV.ContainsKey("起跑点1")) return false;
-        if(!scriptEnv.KV.ContainsKey("起跑点2")) return false;
+        if(!scriptEnv.KV.ContainsKey("起跑点MT组")) return false;
+        if(!scriptEnv.KV.ContainsKey("起跑点MT组")) return false;
         if (_times == 0)
         {
             Share.TrustDebugPoint.Clear();
             
-            起跑点1 = (Vector3)scriptEnv.KV["起跑点1"];
-            起跑点2 = (Vector3)scriptEnv.KV["起跑点2"];
+            起跑点1 = (Vector3)scriptEnv.KV["起跑点MT组"];
+            起跑点2 = (Vector3)scriptEnv.KV["起跑点MT组"];
         }
 
         _times++;
