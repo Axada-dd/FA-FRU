@@ -36,7 +36,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="P2\" />
+      <Folder Include="P3\" />
     </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ public class P1_Open_Remote_1 : ITriggerScript
     }
     private static async void Acton(Dictionary<string, Vector3> partyPos)
     {
-        await Task.Delay(1000);
+        await Task.Delay(300);
         foreach (var pos in partyPos)
         {
             RemoteControlHelper.SetPos(pos.Key, pos.Value);
