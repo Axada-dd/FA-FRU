@@ -9,12 +9,13 @@ namespace FA_FRU.P2;
 
 public class P2_跑圈整合 : ITriggerScript
 {
-    private bool flag_坐标计算 = true;
-    private bool flag_起跑 = false;
-    private bool flag_跑圈 = false;
     private List<Vector3> 跑圈点位_MT组 = [];
     private List<Vector3> 跑圈点位_ST组 = [];
     private int 跑圈点位计数 = 0;
+    private bool flag_跑圈 = false;
+    private bool flag_起跑 = false;
+    private bool flag_坐标计算 = true;
+
     public bool Check(ScriptEnv scriptEnv, ITriggerCondParams condParams)
     {
         if (flag_坐标计算)
@@ -52,7 +53,7 @@ public class P2_跑圈整合 : ITriggerScript
             
             if (condParams is not ReceviceAbilityEffectCondParams abilityEffectCondParams) return false;
             if (abilityEffectCondParams.ActionId != 40209) return false;
-            跑圈点位计数++;
+            flag_跑圈 = false;
             /*if(abilityEffectCondParams.Target == null) return false;
             if (abilityEffectCondParams.Target.DataId != PartyHelper.Party.ToList().First().DataId) return false;*/
             TpAction("MT|H1|D1|D3", 跑圈点位_MT组[1], 300);
@@ -72,6 +73,7 @@ public class P2_跑圈整合 : ITriggerScript
         
         return false;
     }
+
     private static async void TpAction(string regex, Vector3 partyPos, int delay)
     {
         await Task.Delay(delay);
